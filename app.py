@@ -104,12 +104,13 @@ ax8.tick_params(axis='x', rotation=45)
 st.pyplot(fig8)
 
 # Crime Category vs Average No. of Reportings
-st.subheader("Crime Category vs Average Monthly Reportings")
-monthly_crime_avg = filtered_df.groupby(['Crime_Category', 'Month_Occurred']).size().reset_index(name='Count')
-monthly_avg = monthly_crime_avg.groupby('Crime_Category')['Count'].mean().sort_values(ascending=False)
-sns.barplot(x=monthly_avg.index, y=monthly_avg.values)
+st.subheader("Crime Category vs Average Days in Reporting")
+filtered_df['diff'] = (filtered_df['Date_Reported'] - filtered_df['Date_Occurred']).dt.days
+avg_delay = filtered_df.groupby('Crime_Category')['diff'].mean().sort_values(ascending=False)
+fig9, ax9 = plt.subplots(figsize=(15, 4))
+sns.barplot(x=avg_delay.index, y=avg_delay.values, ax=ax)
+ax9.set_ylabel('Avg days in Reporting')
 ax9.tick_params(axis='x', rotation=45)
-ax9.set_ylabel("Average Reportings per Month")
 
 # Time Segments vs No. of Reportings
 st.subheader("Time Segments vs No. of Reportings")
