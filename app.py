@@ -4,7 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
-st.title("Oorja Crime Data EDA Dashboard")
+st.title("Crime Data EDA Dashboard")
 
 # Load dataset
 @st.cache_data
