@@ -107,11 +107,9 @@ st.pyplot(fig8)
 st.subheader("Crime Category vs Average Monthly Reportings")
 monthly_crime_avg = filtered_df.groupby(['Crime_Category', 'Month_Occurred']).size().reset_index(name='Count')
 monthly_avg = monthly_crime_avg.groupby('Crime_Category')['Count'].mean().sort_values(ascending=False)
-fig9, ax9 = plt.subplots(figsize=(10, 5))
-sns.barplot(x=monthly_avg.index, y=monthly_avg.values, ax=ax9)
+sns.barplot(x=monthly_avg.index, y=monthly_avg.values)
 ax9.tick_params(axis='x', rotation=45)
 ax9.set_ylabel("Average Reportings per Month")
-st.pyplot(fig9)
 
 # Time Segments vs No. of Reportings
 st.subheader("Time Segments vs No. of Reportings")
@@ -132,19 +130,15 @@ def get_time_segment(hour):
         return 'Unknown'
 
 filtered_df['Time_Segment'] = filtered_df['Hour'].apply(get_time_segment)
-fig10, ax10 = plt.subplots()
-sns.countplot(data=filtered_df, x='Time_Segment', order=['Early Morning', 'Morning', 'Afternoon', 'Evening', 'Night', 'Late Night'], ax=ax10)
-st.pyplot(fig10)
+sns.countplot(data=filtered_df, x='Time_Segment', order=['Early Morning', 'Morning', 'Afternoon', 'Evening', 'Night', 'Late Night'])
 
 # Weapon Used vs Average No. of Reportings
 st.subheader("Weapon Used vs Average Monthly Reportings")
 monthly_weapon_avg = filtered_df.groupby(['Weapon_Description', 'Month_Occurred']).size().reset_index(name='Count')
 weapon_avg = monthly_weapon_avg.groupby('Weapon_Description')['Count'].mean().sort_values(ascending=False).head(10)
-fig11, ax11 = plt.subplots(figsize=(10, 5))
-sns.barplot(x=weapon_avg.index, y=weapon_avg.values, ax=ax11)
+sns.barplot(x=weapon_avg.index, y=weapon_avg.values)
 ax11.tick_params(axis='x', rotation=45)
 ax11.set_ylabel("Average Monthly Reportings")
-st.pyplot(fig11)
 
 # Footer
 st.markdown("---")
