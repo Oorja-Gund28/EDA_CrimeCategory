@@ -139,8 +139,8 @@ monthly_weapon_avg = filtered_df.groupby(['Weapon_Description', 'Month_Occurred'
 weapon_avg = monthly_weapon_avg.groupby('Weapon_Description')['Count'].mean().sort_values(ascending=False).head(10)
 sns.barplot(x=weapon_avg.index, y=weapon_avg.values)
 fig1, ax1 = plt.subplots(figsize=(15, 4))
-ax11.tick_params(axis='x', rotation=45)
-ax11.set_ylabel("Average Monthly Reportings")
+ax1.tick_params(axis='x', rotation=45)
+ax1.set_ylabel("Average Monthly Reportings")
 
 # Footer
 st.markdown("---")
