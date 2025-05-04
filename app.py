@@ -108,7 +108,7 @@ st.subheader("Crime Category vs Average Days in Reporting")
 filtered_df['diff'] = (filtered_df['Date_Reported'] - filtered_df['Date_Occurred']).dt.days
 avg_delay = filtered_df.groupby('Crime_Category')['diff'].mean().sort_values(ascending=False)
 fig9, ax9 = plt.subplots(figsize=(15, 4))
-sns.barplot(x=avg_delay.index, y=avg_delay.values, ax=ax)
+sns.barplot(x=avg_delay.index, y=avg_delay.values)
 ax9.set_ylabel('Avg days in Reporting')
 ax9.tick_params(axis='x', rotation=45)
 
