@@ -49,7 +49,7 @@ filtered_df = df[
 # Crime Category Distribution
 st.subheader("Crime Category Distribution")
 fig1, ax1 = plt.subplots(figsize=(10, 4))
-train['Crime_Category'].value_counts().plot(kind='pie', autopct='%.2f%%')
+filtered_df['Crime_Category'].value_counts().plot(kind='pie', autopct='%.2f%%')
 ax1.tick_params(axis='x', rotation=45)
 st.pyplot(fig1)
 
