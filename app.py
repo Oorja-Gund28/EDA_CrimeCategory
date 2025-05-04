@@ -48,10 +48,10 @@ filtered_df = df[
 
 # Crime Category Distribution
 st.subheader("Crime Category Distribution")
-fig1, ax1 = plt.subplots(figsize=(10, 4))
+fig0, ax0 = plt.subplots(figsize=(10, 4))
 filtered_df['Crime_Category'].value_counts().plot(kind='pie', autopct='%.2f%%')
-ax1.tick_params(axis='x', rotation=45)
-st.pyplot(fig1)
+ax0.tick_params(axis='x', rotation=45)
+st.pyplot(fig0)
 
 # Victim Age Histogram
 st.subheader("Victim Age Distribution")
@@ -138,6 +138,7 @@ st.subheader("Weapon Used vs Average Monthly Reportings")
 monthly_weapon_avg = filtered_df.groupby(['Weapon_Description', 'Month_Occurred']).size().reset_index(name='Count')
 weapon_avg = monthly_weapon_avg.groupby('Weapon_Description')['Count'].mean().sort_values(ascending=False).head(10)
 sns.barplot(x=weapon_avg.index, y=weapon_avg.values)
+fig1, ax1 = plt.subplots(figsize=(15, 4))
 ax11.tick_params(axis='x', rotation=45)
 ax11.set_ylabel("Average Monthly Reportings")
 
