@@ -150,4 +150,4 @@ st.pyplot(fig11)
 
 # Footer
 st.markdown("---")
-st.markdown("<p style='text-align: center;'>Made by Chota Don of Suryanagar</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>Made by Oorja Gund</p>", unsafe_allow_html=True)
